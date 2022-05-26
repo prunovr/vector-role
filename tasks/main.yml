@@ -1,0 +1,23 @@
+---
+- include_tasks: addrepo.yml
+
+- name: Install Vector
+  ansible.builtin.apt:
+    name: vector
+    update_cache: true
+    state: present
+  notify: Start vector service
+
+- include_tasks: createconfig.yml
+
+- name: Vector. Modify vector.service file ExecStart
+  become: true
+  ansible.builtin.replace:
+    backup: true
+    path: "/lib/systemd/system/vector.service"
+    regexp: "^ExecStartPre=/usr/bin/vector validate$"
+    replace: "ExecStartPre=/usr/bin/vector validate --config-yaml /etc/vector/vector.yml"
+  notify: Start vector service
+
+- name: Force all notified handlers to run at this point
+  meta: flush_handlers

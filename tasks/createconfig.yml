@@ -1,0 +1,8 @@
+---
+- name: Vector | Template config
+  become: true
+  ansible.builtin.template:
+    src: templates/vector.yml.j2
+    dest: /etc/vector/vector.yml
+    mode: "0644"
+    validate: vector validate --no-environment --config-yaml %s
