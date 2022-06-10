@@ -15,6 +15,7 @@ It was tested on the following versions:
 ### Operating systems
 
 * Ubuntu 20.04
+* Centos 8
 
 ## Role Variables
 

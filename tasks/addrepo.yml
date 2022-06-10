@@ -1,6 +1,0 @@
----
-- name: Add the Vector repo
-  become: true
-  ansible.builtin.apt_repository:
-    repo: deb https://repositories.timber.io/public/vector/deb/ubuntu focal main
-    state: present
