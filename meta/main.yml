@@ -32,7 +32,7 @@ galaxy_info:
   platforms:
     - name: CentOS
       versions:
-        - 8
+        - 7
     - name: Ubuntu
       versions:
         - 20.04
